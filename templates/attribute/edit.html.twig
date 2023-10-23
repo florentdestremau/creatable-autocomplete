@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Attribute{% endblock %}
+
+{% block body %}
+    <h1>Edit Attribute</h1>
+
+    {{ include('attribute/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_attribute_index') }}">back to list</a>
+
+    {{ include('attribute/_delete_form.html.twig') }}
+{% endblock %}
