@@ -22,4 +22,9 @@ class AttributeType extends AbstractType
             'csrf_protection' => false,
         ]);
     }
+
+    public function getBlockPrefix(): string
+    {
+        return '';
+    }
 }

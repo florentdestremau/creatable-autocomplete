@@ -24,6 +24,7 @@ class UserType extends AbstractType
                 'by_reference' => false,
                 'attr'         => [
                     'data-controller' => 'custom-autocomplete',
+                    'data-custom-autocomplete-url-value' => '/attribute/new?ajax=1',
                 ],
             ]);
     }
