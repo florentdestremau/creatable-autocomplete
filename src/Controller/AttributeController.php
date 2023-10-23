@@ -33,6 +33,13 @@ class AttributeController extends AbstractController
             $entityManager->persist($attribute);
             $entityManager->flush();
 
+            if ($request->query->get('ajax')) {
+                return $this->json([
+                    'id' => $attribute->getId(),
+                    'name' => $attribute->getName(),
+                ]);
+            }
+
             return $this->redirectToRoute('app_attribute_index', [], Response::HTTP_SEE_OTHER);
         }
 

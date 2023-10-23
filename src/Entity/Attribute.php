@@ -17,8 +17,12 @@ class Attribute
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'attributes')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    public function __toString(): string
+    {
+        return  $this->name;
+    }
 
     public function getId(): ?int
     {

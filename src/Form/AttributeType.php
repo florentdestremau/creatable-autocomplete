@@ -12,15 +12,14 @@ class AttributeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('user')
-        ;
+            ->add('name');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Attribute::class,
+            'data_class'      => Attribute::class,
+            'csrf_protection' => false,
         ]);
     }
 }
