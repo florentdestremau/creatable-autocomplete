@@ -21,7 +21,7 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Attribute::class, orphanRemoval: true)]
+    #[ORM\ManyToMany(targetEntity: Attribute::class, mappedBy: 'users', cascade: ['persist', 'refresh'])]
     private Collection $attributes;
 
     public function __construct()
@@ -70,7 +70,7 @@ class User
     {
         if (!$this->attributes->contains($attribute)) {
             $this->attributes->add($attribute);
-            $attribute->setUser($this);
+            $attribute->addUser($this);
         }
 
         return $this;
@@ -79,10 +79,7 @@ class User
     public function removeAttribute(Attribute $attribute): static
     {
         if ($this->attributes->removeElement($attribute)) {
-            // set the owning side to null (unless already changed)
-            if ($attribute->getUser() === $this) {
-                $attribute->setUser(null);
-            }
+            $attribute->removeUser($this);
         }
 
         return $this;

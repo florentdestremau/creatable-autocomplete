@@ -12,7 +12,7 @@ export default class extends Controller {
 
     disconnect() {
         // You should always remove listeners when the controller is disconnected to avoid side-effects
-        this.element.removeEventListener('autocomplete:pre-connect', this._onPreConnect());
+        this.element.removeEventListener('autocomplete:pre-connect', this._onPreConnect);
     }
 
     _onPreConnect = (event) => {
